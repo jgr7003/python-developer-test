@@ -52,5 +52,30 @@ class MovementsSerializer(serializers.ModelSerializer):
         model = Movements
         fields = '__all__'
 
+    def to_movement(self, obj):
+        return {
+            'id_movement': obj.id,
+            'value': obj.value,
+        }
+
     def to_internal_value(self, data):
-        return super().to_internal_value()
+        try:
+            try:
+                obj_value = data['value']
+                obj_id = data['id_movement']
+                if obj_value > 0:
+                    return Movements.objects.get(id=obj_id)
+            except KeyError:
+                raise serializers.ValidationError(
+                    'id is a required field.'
+                )
+            except ValueError:
+                raise serializers.ValidationError(
+                    'id must be an integer.'
+                )
+        except Movements.DoesNotExist:
+            raise serializers.ValidationError(
+                'Obj does not exist.'
+            )
+
+

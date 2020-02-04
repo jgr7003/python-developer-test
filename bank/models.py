@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 class Client(models.Model):
     CITIZENSHIP_CARD = 'cc'
     FOREIGN_CARD = 'fc'
+
     TYPE_IDENTIFICATIONS = (
         (CITIZENSHIP_CARD, _('citizenship card')),
         (FOREIGN_CARD, _('foreign identity card'))
@@ -37,6 +38,7 @@ class Client(models.Model):
         return f"{self.first_name} - {self.last_name}"
 
     class Meta:
+        unique_together = (('type_identification', 'number_identification'))
         verbose_name = _('client')
         verbose_name_plural = _('clients')
         db_table = "bank_clients"
@@ -122,7 +124,7 @@ class Movements(models.Model):
     )
 
     def __str__(self):
-        return f"{self.account} - {self.type}: {self.value}"
+        return f"{self.account} - {self.typexite}: {self.value}"
 
     class Meta:
         verbose_name = _('account')
