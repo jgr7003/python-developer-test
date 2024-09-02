@@ -45,19 +45,21 @@ Please, when solving a question, leave a comment with the number of the result, 
 # Solution 6 (iii)
 ```
 
-1. Add a unique key composed of the identification type and identification number in the client model (1 point)
-2. Modify the foreign key to the client in account model for with one that restricts cascade deletion (1 point)
-3. Add an index for the number field in account model (1 point)
-4. Add the user accounts in the to_representation method in the ClientSerializer (3 points)
-5. Modify the MovementsSerializer so that only transaction values ​​greater than 0 are accepted (1 point)
-6. Using Django filters, add the following filters:
-    1. By identification number in the ClientViewSet (1 point)
-    2. By customer identification number in the AccountViewSet (1 point)
-    3. By account number in the MovementsViewSet (1 point)
-7. Modify the MovementSerializer, so that at the time of registering any transaction, modify the account balance according to the following instructions:
-    1. Consignments add to the balance (2 points)
-    2. Withdrawals subtract from the balance "if the balance is less than zero, indicate that the transaction cannot be made" (2 points)
-    3. Transfer sent subtracted from the balance "if the balance is less than zero, indicate that the transaction cannot be made" (3 points)
-    4. Transfer received add to the balance (2 point)
+1. Add a unique key to the Client model: Include a unique key composed of the identification type and identification number in the Client model (1 point).
+2. Modify the foreign key in the Account model: Adjust the foreign key referencing the client in the Account model to restrict cascade deletion (1 point).
+3. Add an index to the number field in the Account model: Create an index for the number field in the Account model (1 point).
+4. Include user accounts in the Client representation: Add the user accounts to the to_representation method in the ClientSerializer (3 points).
+5. Modify the MovementsSerializer to validate transaction values: Ensure that the MovementsSerializer only accepts transaction values greater than 0 (1 point).\
+6. Add filters using Django filters:
+    Filter by identification number in ClientViewSet (1 point).
+    Filter by client identification number in AccountViewSet (1 point).
+    Filter by account number in MovementsViewSet (1 point).
+7. Modify the MovementSerializer to adjust the account balance:
+    Add deposits to the balance (2 points).
+    Subtract withdrawals from the balance "if the balance is less than zero, indicate that the transaction cannot be processed" (2 points).
+    Subtract sent transfers from the balance "if the balance is less than zero, indicate that the transaction cannot be processed" (3 points).
+    Add received transfers to the balance (2 points).
+    Deduct 4 units for every 1000 in case of sending a transfer or making a withdrawal (3 points).
+    Implement an audit system for balance changes: Develop an audit system to track balance changes in the account, using the existing client audit system as a reference (3 points).
     5. 4 * 1000 in case of sending transfer or making a withdrawal, deduct 4 for each 1000 (3 points)
 8. Implement an audit system to bring balance changes to the account "you can be guided by the one that exists to carry out the client's audit" (3 points)
