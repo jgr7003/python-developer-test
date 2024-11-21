@@ -51,15 +51,13 @@ Please, when solving a question, leave a comment with the number of the result, 
 4. Include user accounts in the Client representation: Add the user accounts to the to_representation method in the ClientSerializer (3 points).
 5. Modify the MovementsSerializer to validate transaction values: Ensure that the MovementsSerializer only accepts transaction values greater than 0 (1 point).\
 6. Add filters using Django filters:
-    Filter by identification number in ClientViewSet (1 point).
-    Filter by client identification number in AccountViewSet (1 point).
-    Filter by account number in MovementsViewSet (1 point).
+    - Filter by identification number in ClientViewSet (1 point).
+    - Filter by client identification number in AccountViewSet (1 point).
+    - Filter by account number in MovementsViewSet (1 point).
 7. Modify the MovementSerializer to adjust the account balance:
-    Add deposits to the balance (2 points).
-    Subtract withdrawals from the balance "if the balance is less than zero, indicate that the transaction cannot be processed" (2 points).
-    Subtract sent transfers from the balance "if the balance is less than zero, indicate that the transaction cannot be processed" (3 points).
-    Add received transfers to the balance (2 points).
-    Deduct 4 units for every 1000 in case of sending a transfer or making a withdrawal (3 points).
-    Implement an audit system for balance changes: Develop an audit system to track balance changes in the account, using the existing client audit system as a reference (3 points).
-    5. 4 * 1000 in case of sending transfer or making a withdrawal, deduct 4 for each 1000 (3 points)
+    - Add deposits to the balance (2 points).
+    - Subtract withdrawals from the balance "if the balance is less than zero, indicate that the transaction cannot be processed" (2 points).
+    - Subtract sent transfers from the balance "if the balance is less than zero, indicate that the transaction cannot be processed" (3 points).
+    - Add received transfers to the balance (2 points).
+    - Deduct 4 units for every 1000 in case of sending a transfer or making a withdrawal (3 points).
 8. Implement an audit system to bring balance changes to the account "you can be guided by the one that exists to carry out the client's audit" (3 points)
